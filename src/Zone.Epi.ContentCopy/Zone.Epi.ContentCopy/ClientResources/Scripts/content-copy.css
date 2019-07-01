@@ -1,0 +1,140 @@
+﻿.hidden {
+    display: none;
+}
+
+.flexer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 98%;
+    padding: 0.5em;
+}
+
+.picker {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    padding: 1em;
+    border: 2px solid #ccc;
+}
+
+.half-padding, h2 {
+    padding: 0.5em 0 0 0;
+}
+
+input, label {
+    cursor: pointer;
+}
+
+.jstree {
+    padding: 0.5em 0;
+}
+
+#propertyListOfSource {
+    list-style-type: none;
+}
+
+#propertyListOfSource li {
+    padding: 0.5em 0 0 0;
+}
+
+.copy-mode {
+    display: block;
+    margin: 1em 0;
+    font-weight: 600;
+}
+
+.submit-button {
+    display: block;
+    margin: 1em 0;
+    padding: 0 1em;
+}
+
+.output-area {
+    background-color: #e3e3e3;
+    padding: 0 0.5em;
+    border: 1px solid #c1c1c1;
+}
+
+.output-area p {
+    margin-bottom: 1.5em;
+}
+
+.jstree-default .jstree-hovered {
+    background: none;
+}
+
+.jstree-default .jstree-clicked {
+    background-color: #575757;
+    color: #e6e6e6;
+}
+
+.jstree-default .jstree-themeicon {
+    display: none;
+}
+
+.jstree-default .jstree-anchor {
+    line-height: 18px;
+    height: 18px;
+    display: initial;
+    border-radius: initial;
+    margin-left: 3px;
+}
+
+.jstree-default .jstree-node {
+    min-height: 18px;
+    line-height: 18px;
+    margin-left: 0;
+}
+
+.jstree-default .jstree-children {
+    margin-left: 1.1em;
+}
+
+.jstree-default .jstree-open > .jstree-ocl {
+    background-image: url("/App_Themes/Default/Images/ExplorerTree/Tminus.gif");
+    background-position: 0 0;
+    width: 14px;
+    height: 18px;
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+
+.jstree-default li:last-child.jstree-open > .jstree-ocl {
+    background-image: url("/App_Themes/Default/Images/ExplorerTree/Lminus.gif");
+}
+
+.jstree-default .jstree-closed > .jstree-ocl {
+    background-image: url("/App_Themes/Default/Images/ExplorerTree/Tplus.gif");
+    background-position: 0 0;
+    width: 14px;
+    height: 18px;
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+
+.jstree-default .jstree-closed:last-child > .jstree-ocl {
+    background-image: url("/App_Themes/Default/Images/ExplorerTree/Lplus.gif");
+}
+
+.jstree-default .jstree-leaf > .jstree-ocl {
+    background-image: url("/App_Themes/Default/Images/ExplorerTree/T.gif");
+    background-position: 0 0;
+    width: 14px;
+    height: 18px;
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+
+.jstree-default .jstree-leaf:last-child > .jstree-ocl {
+    background-image: url("/App_Themes/Default/Images/ExplorerTree/L.gif");
+}
+
+.jstree-default li {
+    background: url("/App_Themes/Default/Images/ExplorerTree/I.gif") repeat-y left top;
+}
+
+.jstree-default li:last-child {
+    background: url("/App_Themes/Default/Images/ExplorerTree/I.gif") no-repeat left top;
+}

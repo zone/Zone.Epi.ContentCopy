@@ -1,0 +1,89 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+@using EPiServer.Shell
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>Content Copy Tool</title>
+    <link type="text/css" rel="stylesheet" href="@Paths.ToShellClientResource("ClientResources/epi/themes/legacy/ShellCore.css")" />
+    <link type="text/css" rel="stylesheet" href="@Paths.ToShellClientResource("ClientResources/epi/themes/legacy/DojoDashboardCompatibility.css")" />
+    <link type="text/css" rel="stylesheet" href="@Paths.ToResource("CMS", "App_Themes/Default/Styles/system.css")" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.8/jstree.min.js"></script>
+    <script src="@Paths.ToClientResource("Zone.Epi.ContentCopy", "Scripts/content-copy.js")"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.8/themes/default/style.min.css" />
+    <link rel="stylesheet" href="@Paths.ToClientResource("Zone.Epi.ContentCopy", "Scripts/content-copy.css")" />
+</head>
+<body class="Sleek" id="body">
+    @Html.AntiForgeryToken()
+    <div class="epi-padding">
+        <div id="AdminPlugin" class="epi-contentContainer epi-fullWidth">
+            <div class="epi-contentArea">
+                <h1 class="EP-prefix">Content Copy</h1>
+            </div>
+
+            <div class="flexer">
+                <div class="picker">
+
+                    <h2>Source Settings </h2>
+
+                    <label for="sourceLangaugeList">Language</label>
+                    <div id="sourceLangaugeList" class="half-padding"></div>
+
+                    <label for="sourceCultureSpecific" class="half-padding">
+                        <input id="sourceCultureSpecific" type="checkbox" checked />
+                        Only culture specific properties
+                    </label>
+
+                    <h2>Source Content</h2>
+
+                    <div class="epi-paddingVertical-small episerver-pagetree-selfcontained">
+                        <div id="jstreeSource" class="episerver-pagetreeview"></div>
+                    </div>
+                </div>
+
+                <div class="picker">
+
+                    <h2>Destination Content</h2>
+                    <div class="epi-paddingVertical-small episerver-pagetree-selfcontained">
+                        <div id="jstreeDestination" class="episerver-pagetreeview"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding:2em;" id="sourcePropertiesArea" class="hidden">
+                <h2 id="pageTitleText">Select properties to copy</h2>
+
+                <div id="pageTitleNoProps" class="half-padding"><strong>No properties to copy.</strong></div>
+
+                <ul id="propertyListOfSource"></ul>
+
+                <div class="copy-mode" id="copyTypeSection">
+                    <div>
+                        <label for="copyAndPublish">Publish Automatically</label>
+                        <input type="radio" id="copyAndPublish" name="copyAndPublish" value="true" />
+                    </div>
+
+                    <div>
+                        <label for="copyAndCreateDraft">Copy and Create Draft</label>
+                        <input type="radio" id="copyAndCreateDraft" name="copyAndPublish" value="false" checked />
+                    </div>
+                </div>
+
+                <div class="output-area hidden" id="outputArea">
+                    <p id="outputText"></p>
+                </div>
+
+                <input type="button" onclick="submitCopy();" value="Copy" class="submit-button" id="copySubmitButton" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

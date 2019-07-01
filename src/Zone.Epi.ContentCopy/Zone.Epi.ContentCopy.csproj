@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\targets\AddReleaseNotes.targets" />
+  <Import Project="..\targets\AddReadmeMarkdown.targets" />
+  <Import Project="..\targets\ZipEpiserverModule.targets" />
+  <Import Project="..\targets\CommonBuild.props" />
+
+  <PropertyGroup>    
+    <TargetFrameworks>net461</TargetFrameworks>
+    <PackageId>Zone.Epi.ContentCopy</PackageId>
+    <Authors>Jacob Pretorius</Authors>
+    <owners>Zone</owners>
+    <Company>Zone</Company>    
+    <Copyright>Copyright $(CurrentYear)</Copyright>
+    <PackageDescription>Episerver CMS Admin tool to copy content from one page to another.</PackageDescription>
+    <!--follow semantic versioning may include prelease information too-->
+    <PackageVersion>1.0.0</PackageVersion>
+    <!--leave releasenotes blank to read in from releasenotes.txt-->
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageTags>Zone EPiServerAddOn Episerver</PackageTags>
+    <!--set urls as needed-->
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <License>https://raw.githubusercontent.com/zone/Zone.Epi.ContentCopy/master/license.txt</License>
+    <PackageProjectUrl>https://github.com/zone/Zone.Epi.ContentCopy</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/zone/Zone.Epi.ContentCopy/master/img/Zone.jpg</PackageIconUrl>
+
+    <!--adds readme.md as readme.txt in package-->
+    <IncludeReadMeMarkdown>false</IncludeReadMeMarkdown>
+
+    <!--Provide intellisense for developers-->
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+
+    <!--uncomment these lines to create a zipped add on module -->
+    <EpiModuleFolderName>$(PackageId)</EpiModuleFolderName>
+    <EpiModulePackagePath>.\Content\modules\_protected\$(PackageId)</EpiModulePackagePath>
+
+    <!--useful to allow others to debug -->
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSource>true</IncludeSource>
+
+    <!--set assembly info version from CI prop if possible-->
+    <BuildInfo Condition="'$(CIBuildNumber)' != ''"> Commit: $(RepositoryCommit) Branch: $(RepositoryBranch) Build: $(CIBuildNumber)</BuildInfo>
+    <InformationalVersion>$(PackageVersion) $(BuildInfo)</InformationalVersion>
+
+    <!--do not change unless you want to deal with assembly redirects-->
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove=".template.config\**" />
+    <EmbeddedResource Remove=".template.config\**" />
+    <None Remove=".template.config\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="web.config.transform" Condition="'$(EpiModuleFolderName)' != ''" pack="true" />
+  </ItemGroup>
+
+  <ItemGroup>    
+    <PackageReference Include="EPiServer.CMS.Core" Version="[11.3.3, 12.0)" />
+    <PackageReference Include="EPiServer.CMS.UI" Version="[11.2.5, 12.0)" />
+    <PackageReference Include="EPiServer.CMS.UI.Core" Version="[11.2.5, 12.0)" /> 
+    <PackageReference Include="EPiServer.Marketing.Testing" Version="[2.5.8, 2.6)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+</Project>
